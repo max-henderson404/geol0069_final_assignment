@@ -14,12 +14,8 @@ Shown in this project is the performance of a linear interpolation algorithm and
 The process of SAR is shown in the graphics below:
 
 <img src="images/1.png" width="600">
-
-![Image 1](images/1.png)
-
-![Image 2](images/2.png)
-
-![Image 3](images/3.png)
+<img src="images/2.png" width="600">
+<img src="images/3.png" width="600">
 
 ## Steps to install
 First, clone the packages from their respective Git repositories:
