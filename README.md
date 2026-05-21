@@ -16,6 +16,7 @@ The process of SAR is shown in the graphics below:
 <img src="images/1.png" width="600">
 <img src="images/2.png" width="600">
 <img src="images/3.png" width="600">
+<img src="images/4.png" width="600">
 
 ## Steps to install
 First, clone the packages from their respective Git repositories:
