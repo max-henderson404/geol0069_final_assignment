@@ -18,6 +18,22 @@ The process of SAR is shown in the graphics below:
 <img src="images/3.png" width="600">
 <img src="images/4.png" width="600">
 
+### Environmental assessment
+It is important to evaluate the environmental impact of this project. 
+
+#### Satellite launches
+The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N~2~O~4~-powered launch platforms, which have CO_2 emissions of 200 g per kg of fuel. Below is a table to roughly calculate the emissions of each launch.
+
+| Satellite | Vehicle | Estimated fuel mass (kg) | CO~2~ emissions
+| -- | -- | -- | -- |
+| Sentinel 3A | Rokot | 87130 | 17426 |
+| Sentinel 3B | Rokot | 87130 | 17426 |
+| Cryosat-2 | Dnepr | 170107 | 34021 |
+
+It is important to consider that while these emissions are very large, they are only a one-time emission. The data used by this project are the same as many other projects, and so it is reasonable to assume the total carbon cost of this project is a marginal one, rather than attributing the entire launch footprint to it.
+
+Similarly, we should determine the CO~2~ emissions associated with interpolation.
+
 ## Steps to install
 First, clone the packages from their respective Git repositories:
 ```
