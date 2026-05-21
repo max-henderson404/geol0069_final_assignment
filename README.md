@@ -12,6 +12,9 @@ This provides an idea of the sea surface's deviation from the mean and can be us
 Shown in this project is the performance of a linear interpolation algorithm and a machine learning package developed by UCL's Centre for Polar Observation and Modelling (CPOM), known as GPSat.
 
 The process of SAR is shown in the graphics below:
+
+<img src="images/1.png" width="400">
+
 ![Image 1](images/1.png)
 
 ![Image 2](images/2.png)
