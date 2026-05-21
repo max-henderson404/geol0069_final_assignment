@@ -13,7 +13,7 @@ Shown in this project is the performance of a linear interpolation algorithm and
 
 The process of SAR is shown in the graphics below:
 
-<img src="images/1.png" width="400">
+<img src="images/1.png" width="600">
 
 ![Image 1](images/1.png)
 
