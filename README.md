@@ -32,7 +32,12 @@ The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N~2~O~4~-pow
 
 It is important to consider that while these emissions are very large, they are only a one-time emission. The data used by this project are the same as many other projects, and so it is reasonable to assume the total carbon cost of this project is a marginal one, rather than attributing the entire launch footprint to it.
 
-Similarly, we should determine the CO~2~ emissions associated with interpolation.
+Similarly, we should determine the CO~2~ emissions associated with interpolation. The interpolations were performed on the UCL CPOM server, with a AMD EPYC 9354P 32-Core Processor and a NVIDIA L4 Tensor Core GPU. The GPU's energy use can be inspected during interpolation, and multiplied by the total interpolation time output by GPSat to give us the energy expenditure of a full month of tracks. Approximate CPU wattage for linear interpolation is determined by multiplying the CPU use of the process by the low thermal design power (TPD) of the CPU, which is in this case 240W. The avg. CPU use during interpolation 8.83%.
+
+| Interpolation | Power (W) | Interpolation time (s) | Power use (kWh) | CO~2~ emissions
+| -- | -- | -- | -- | -- |
+| Linear | 21.2 | x | x | x |
+| GPSat | 28.8 | x | x | x |
 
 ## Steps to install
 First, clone the packages from their respective Git repositories:
