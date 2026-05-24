@@ -13,9 +13,12 @@ Shown in this project is the performance of a linear interpolation algorithm and
 
 The process of SAR is shown in the graphics below:
 
+1. The SAR satellite, either CryoSat-2 or Sentinel 3, emits bursts of radar pulses which echo from the ground.
 <img src="images/1.png" width="600">
 <img src="images/2.png" width="600">
 <img src="images/3.png" width="600">
+
+With what data we do have from SAR, we can use linear interpolation or Gaussian processes to estimate the SLA at unobservable points
 <img src="images/4.png" width="600">
 
 ### Environmental assessment
