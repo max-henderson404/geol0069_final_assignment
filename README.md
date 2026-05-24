@@ -32,22 +32,27 @@ The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N~2~O~4~-pow
 
 It is important to consider that while these emissions are very large, they are only a one-time emission. The data used by this project are the same as many other projects, and so it is reasonable to assume the total carbon cost of this project is a marginal one, rather than attributing the entire launch footprint to it.
 
-Similarly, we should determine the CO~2~ emissions associated with interpolation. The interpolations were performed on the UCL CPOM server, with a AMD EPYC 9354P 32-Core Processor and a NVIDIA L4 Tensor Core GPU. The GPU's energy use can be inspected during interpolation, and multiplied by the total interpolation time output by GPSat to give us the energy expenditure of a full month of tracks. Approximate CPU wattage for linear interpolation is determined by multiplying the CPU use of the process by the low thermal design power (TPD) of the CPU, which is in this case 240W. The avg. CPU use during interpolation 8.83%.
+Similarly, we should determine the CO<sub>2</sub> emissions associated with interpolation. The interpolations were performed on the UCL CPOM server, with a AMD EPYC 9354P 32-Core Processor and a NVIDIA L4 Tensor Core GPU. The GPU's energy use can be inspected during interpolation, and multiplied by the total interpolation time output by GPSat to give us the energy expenditure of a full month of tracks. Approximate CPU wattage for linear interpolation is determined by multiplying the CPU use of the process by the low thermal design power (TPD) of the CPU, which is in this case 240W. The avg. CPU use during interpolation 8.83%.
 
-| Interpolation | Power (W) | Interpolation time (s) | Power use (kWh) | CO~2~ emissions
+It is important to note that the recorded times are only of interpolation times, and not of any intermediary steps in memory or storage. They do, however, represent the dominant factors in energy usage and so this is a reasonable approximation to make.
+
+This gives us an energy use in kWh, which we can then use to estimate the CO<sub>2</sub> emitted. The daily average carbon intensity of the UK at time of writing is 116 gCO<sub>2</sub> / kWh. While London's carbon intensity is higher than the national average, UCL's documented sustainability initiatives mean that the energy mix might be closer to the national average.
+
+| Interpolation | Power (W) | Interpolation time (s) | Energy use (kWh) | CO<sub>2</sub> emissions |
 | -- | -- | -- | -- | -- |
 | Linear | 21.2 | x | x | x |
 | GPSat | 28.8 | x | x | x |
 
+The total CO<sub>2</sub> emissions from the computation of this project are y kg.
+
 ## Steps to install
-First, clone the packages from their respective Git repositories:
+This repo requires the installation of the GPSat library. This is done by cloning the repo:
 ```
 git clone https://github.com/CPOMUCL/GPSat.git
-git clone https://github.com/totony4real/DeepRandomFeatures.git
 ```
+And then following the installation instructions. This requires the creation of a virtual env, preferably with conda.
 
 From inside `path/to/GPSat`:
-
 ```
 conda create -n geol0069_gpsat python=3.11
 conda activate geol0069_gpsat
@@ -55,11 +60,14 @@ python -m pip install -r requirements.txt
 python -m pip install -e ./
 ```
 
-From inside `path/to/DeepRandomFeatures`:
+Now you have an environment set up to run the notebooks in this repository. To run the notebooks, navigate to a separate directory and clone this repo:
 ```
-conda create -n geol0069_drf python=3.11
-conda activate geol0069_drf
-python -m pip install -r requirements.txt
-python -m pip install -e ./
+git clone https://github.com/max-henderson404/geol0069_final_assignment.git
 ```
+Then you are good to go. For further instructions on use, please consult the tutorial video below.
 
+## Tutorial video
+
+This video walks you through the steps required to download, install and successfully run the notebooks in this project.
+
+## References
