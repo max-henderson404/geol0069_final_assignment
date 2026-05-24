@@ -13,16 +13,17 @@ Shown in this project is the performance of a linear interpolation algorithm and
 
 The process of SAR is shown in the graphics below:
 
-1. The SAR satellite, either CryoSat-2 or Sentinel 3, emits bursts of radar pulses which echo from the ground.
+1. The SAR satellite, either CryoSat-2 or Sentinel 3, emits bursts of radar pulses which echo from the ground. Each pulse is emitted at a different angle, meaning that when it reaches the detector after reflecting, it will have a different Doppler shift to all other pulses.
 <img src="images/1.png" width="600">
+The effect of this is that one Doppler "strip" receives a series of pulses, all at different Doppler shifts, giving several measurements of altitude, and improving the resolution of the altimeter. CryoSat-2 and Sentinel 3 have along-track footprints of 300 m.
 <img src="images/2.png" width="600">
+SSH data can be acquired over sea ice leads, which are cracks in sea ice. However, the over sea ice floes (water covered by the ice), these data cannot be obtained.
 <img src="images/3.png" width="600">
-
-With what data we do have from SAR, we can use linear interpolation or Gaussian processes to estimate the SLA at unobservable points
+With what data we do have from SAR, we can use linear interpolation or Gaussian processes to estimate the SSH, or to second order, SLA, at unobservable points.
 <img src="images/4.png" width="600">
 
 ### Environmental assessment
-It is important to evaluate the environmental impact of this project. 
+It is important to evaluate the environmental impact of this project. Below is an analysis of the CO<sub>2</sub> emissions of the launch of the satellites used and of the energy used in this project's computation.
 
 #### Satellite launches
 The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N~2~O~4~-powered launch platforms, which have CO_2 emissions of 200 g per kg of fuel. Below is a table to roughly calculate the emissions of each launch.
