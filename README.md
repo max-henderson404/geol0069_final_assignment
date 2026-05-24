@@ -9,7 +9,7 @@ $$ SLA = SSH - MSS $$
 
 This provides an idea of the sea surface's deviation from the mean and can be used in eddy tracking. The process of infering this SLA, however, can be challenging due to the limitations on acquiring SLA datapoints. Not all measurements made by the satellite altimeter at the footprint resolution will contain leads and so an effective interpolation algorithm must be used. The focus of this project is to determine the strengths of different algorithms for this purpose.
 
-Shown in this project is the performance of a linear interpolation algorithm and a machine learning package developed by UCL's Centre for Polar Observation and Modelling (CPOM), known as GPSat.
+Shown in this project is the performance of a linear interpolation algorithm and a machine learning package developed by UCL's Centre for Polar Observation and Modelling (CPOM), known as GPSat. The GPSat package's code can be found [here](https://github.com/CPOMUCL/GPSat).
 
 The process of SAR is shown in the graphics below:
 
@@ -32,6 +32,7 @@ The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N~2~O~4~-pow
 
 It is important to consider that while these emissions are very large, they are only a one-time emission. The data used by this project are the same as many other projects, and so it is reasonable to assume the total carbon cost of this project is a marginal one, rather than attributing the entire launch footprint to it.
 
+#### Emissions due to computation
 Similarly, we should determine the CO<sub>2</sub> emissions associated with interpolation. The interpolations were performed on the UCL CPOM server, with a AMD EPYC 9354P 32-Core Processor and a NVIDIA L4 Tensor Core GPU. The GPU's energy use can be inspected during interpolation, and multiplied by the total interpolation time output by GPSat to give us the energy expenditure of a full month of tracks. Approximate CPU wattage for linear interpolation is determined by multiplying the CPU use of the process by the low thermal design power (TPD) of the CPU, which is in this case 240W. The avg. CPU use during interpolation 8.83%.
 
 It is important to note that the recorded times are only of interpolation times, and not of any intermediary steps in memory or storage. They do, however, represent the dominant factors in energy usage and so this is a reasonable approximation to make.
@@ -45,7 +46,9 @@ This gives us an energy use in kWh, which we can then use to estimate the CO<sub
 
 The total CO<sub>2</sub> emissions from the computation of this project are y kg.
 
-## Steps to install
+## Getting started
+Local use of these notebooks require **a machine with a GPU**, and spatiotemporal scalar field data in the format shown in `preprocessing.ipynb`. Once you have these prerequisites
+### Steps to install
 This repo requires the installation of the GPSat library. This is done by cloning the repo:
 ```
 git clone https://github.com/CPOMUCL/GPSat.git
@@ -54,8 +57,8 @@ And then following the installation instructions. This requires the creation of 
 
 From inside `path/to/GPSat`:
 ```
-conda create -n geol0069_gpsat python=3.11
-conda activate geol0069_gpsat
+conda create -n env python=3.11
+conda activate env
 python -m pip install -r requirements.txt
 python -m pip install -e ./
 ```
