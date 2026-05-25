@@ -7,13 +7,13 @@ Satellite altimetry missions use sythetic aperture radar (SAR) to find the surfa
 
 $$ SLA = SSH - MSS $$
 
-This provides an idea of the sea surface's deviation from the mean and can be used in eddy tracking. The process of infering this SLA, however, can be challenging due to the limitations on acquiring SLA datapoints. Not all measurements made by the satellite altimeter at the footprint resolution will contain leads and so an effective interpolation algorithm must be used. The focus of this project is to determine the strengths of different algorithms for this purpose.
+This provides an idea of the sea surface's deviation from the mean and can be used in eddy [4] tracking. The process of infering this SLA, however, can be challenging due to the limitations on acquiring SLA datapoints. Not all measurements made by the satellite altimeter at the footprint resolution will contain leads and so an effective interpolation algorithm must be used. The focus of this project is to determine the strengths of different algorithms for this purpose.
 
 Shown in this project is the performance of a linear interpolation algorithm and a machine learning package developed by UCL's Centre for Polar Observation and Modelling (CPOM), known as GPSat. The GPSat package's code can be found [here](https://github.com/CPOMUCL/GPSat). We will use these to interpolate over 300 SAR tracks from the satellite missions CryosSat-2 and Sentinel-3 from January 2020.
 
 The process of SAR is shown in the graphics below:
 
-1. The SAR satellite, either CryoSat-2 [2] or Sentinel 3 [5], emits bursts of radar pulses which echo from the ground. Each pulse is emitted at a different angle, meaning that when it reaches the detector after reflecting, it will have a different Doppler shift to all other pulses.
+1. The SAR satellite, either CryoSat-2 [2] or Sentinel 3 [6], emits bursts of radar pulses which echo from the ground. Each pulse is emitted at a different angle, meaning that when it reaches the detector after reflecting, it will have a different Doppler shift to all other pulses.
 <img src="images/1.png" width="600">
 The effect of this is that one Doppler "strip" receives a series of pulses, all at different Doppler shifts, giving several measurements of altitude, and improving the resolution of the altimeter. CryoSat-2 and Sentinel 3 have along-track footprints of 300 m.
 <img src="images/2.png" width="600">
@@ -26,11 +26,11 @@ With what data we do have from SAR, we can use linear interpolation or Gaussian 
 It is important to evaluate the environmental impact of this project. Below is an analysis of the CO<sub>2</sub> emissions of the launch of the satellites used and of the energy used in this project's computation.
 
 #### Satellite launches
-The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N<sub>2</sub>O<sub>4</sub>-powered launch platforms, which have CO_2 emissions of 200 g per kg of fuel [7]. Below is a table to roughly calculate the emissions of each launch.
+The Sentinel 3A, Sentinel 3B, and CryoSat-2 were placed in orbit on N<sub>2</sub>O<sub>4</sub>-powered launch platforms, which have CO_2 emissions of 200 g per kg of fuel [8]. Below is a table to roughly calculate the emissions of each launch.
 
-| Satellite | Vehicle | Estimated fuel mass (kg) | CO<sub>2</sub> emissions
+| Satellite | Vehicle | Estimated fuel mass (kg) | CO<sub>2</sub> emissions (kg) |
 | -- | -- | -- | -- |
-| Sentinel 3A | Rokot | 87130 [4] | 17426 |
+| Sentinel 3A | Rokot | 87130 [5] | 17426 |
 | Sentinel 3B | Rokot | 87130 | 17426 |
 | Cryosat-2 | Dnepr | 170107 [3] | 34021 |
 
@@ -41,7 +41,7 @@ Similarly, we should determine the CO<sub>2</sub> emissions associated with inte
 
 Note that the recorded times are only of interpolation times, and not of any intermediary steps in memory or storage. They do, however, represent the dominant factors in energy usage and so this is a reasonable approximation to make.
 
-This gives us an energy use in kWh, which we can then use to estimate the CO<sub>2</sub> emitted. The daily average carbon intensity of the UK at time of writing is 116 gCO<sub>2</sub> / kWh [1]. While London's carbon intensity is higher than the national average, UCL's documented sustainability initiatives [6] mean that the energy mix might be closer to the national average.
+This gives us an energy use in kWh, which we can then use to estimate the CO<sub>2</sub> emitted. The daily average carbon intensity of the UK at time of writing is 116 gCO<sub>2</sub> / kWh [1]. While London's carbon intensity is higher than the national average, UCL's documented sustainability initiatives [7] mean that the energy mix might be closer to the national average.
 
 | Interpolation | Power (W) | Interpolation time (s) | Energy use (kWh) | CO<sub>2</sub> emissions (g) |
 | -- | -- | -- | -- | -- |
@@ -57,7 +57,7 @@ This repo requires the installation of the GPSat library. This is done by clonin
 ```
 git clone https://github.com/CPOMUCL/GPSat.git
 ```
-And then following the installation instructions. This requires the creation of a virtual env, preferably with conda.
+And then following the installation instructions. This requires the creation of a virtual environment, preferably with conda.
 
 From inside `path/to/GPSat`:
 ```
@@ -85,7 +85,8 @@ This video walks you through the steps required to download, install and success
 1. carbonintensity.org.uk. Carbon Intensity API. Carbon Intensity https://carbonintensity.org.uk.
 2. Bouzinac, C. CryoSat-2 Product Handbook. 58 https://earth.esa.int/eogateway/documents/20142/37627/CryoSat-Baseline-D-Product-Handbook.pdf (2019).
 3. Wade, M. Dnepr. Encyclopedia Astronautica http://www.astronautix.com/d/dnepr.html (2019).
-4. Wade, M. Rokot. Encyclopedia Astronautica https://web.archive.org/web/20130404163150/http://www.astronautix.com/lvs/rokot.htm (2013).
-5. Quartly, G. & Aublanc, J. Sentinel-3 SRAL/MWR       Land User Handbook. (2025).
-6. UCL. UCL Annual Sustainability Report 2024-2025. https://www.ucl.ac.uk/sustainable/sites/sustainable/files/ucl_annual_sustainability_report_2024-2025.pdf (2025).
-7. Brown, T. F. M., Bannister, M. T., Revell, L. E., Sukhodolov, T. & Rozanov, E. Worldwide Rocket Launch Emissions 2019: An Inventory for Use in Global Models. Earth and Space Science 11, e2024EA003668 (2024).
+4. Kubryakov, A. A., Kozlov, I. E. & Manucharyan, G. E. Large Mesoscale Eddies in the Western Arctic Ocean From Satellite Altimetry Measurements. JGR Oceans 126, e2020JC016670 (2021).
+5. Wade, M. Rokot. Encyclopedia Astronautica https://web.archive.org/web/20130404163150/http://www.astronautix.com/lvs/rokot.htm (2013).
+6. Quartly, G. & Aublanc, J. Sentinel-3 SRAL/MWR       Land User Handbook. (2025).
+7. UCL. UCL Annual Sustainability Report 2024-2025. https://www.ucl.ac.uk/sustainable/sites/sustainable/files/ucl_annual_sustainability_report_2024-2025.pdf (2025).
+8. Brown, T. F. M., Bannister, M. T., Revell, L. E., Sukhodolov, T. & Rozanov, E. Worldwide Rocket Launch Emissions 2019: An Inventory for Use in Global Models. Earth and Space Science 11, e2024EA003668 (2024).
